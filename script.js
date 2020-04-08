@@ -516,14 +516,20 @@ function keyPress() {
 
 keyPress();
 
-let text = '';
-const keyboardContainer = document.querySelector('.keyboard');
+function mousePress() {
+  let text = '';
+  const keyboardContainer = document.querySelector('.keyboard');
 
-keyboardContainer.addEventListener('mousedown', (event) => {
-  const btn = event.target;
+  keyboardContainer.addEventListener('mousedown', (event) => {
+    const btn = event.target;
 
-  if (btn) {
-    text += btn.innerText;
-    document.querySelector('.textarea').innerText = text;
-  }
-});
+    if (btn.className === 'key' || btn.innerText.length === 1) {
+      if (btn) {
+        text += btn.innerText;
+        document.querySelector('.textarea').innerHTML = text;
+      }
+    }
+  });
+}
+
+mousePress();
